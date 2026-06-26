@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Czy masz matczyną lukę? | Monika Więzowska</title>
+<meta name="description" content="8 pytań. Konkretnych. Z życia.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--granat:#1C2B4A;--granat-mid:#243356;--zloto:#C4A84B;--zloto-light:rgba(196,168,75,.12);--kos:#F5F0E8;--text:#1C2B4A;--text-mid:#4a5568;--text-light:#718096;--border:rgba(28,43,74,.12);--border-mid:rgba(28,43,74,.22);--bg:#FAFAF8}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;line-height:1.7;font-size:16px}
+.page{max-width:640px;margin:0 auto;padding:0 20px 60px}
+.site-header{text-align:center;padding:28px 20px 0;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-light)}
+.site-header span{color:var(--zloto)}
+#screen-intro{padding-top:32px}
+.hero-label{display:inline-block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--zloto);background:var(--zloto-light);padding:5px 14px;border-radius:2px;margin-bottom:24px}
+.hero-headline{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,6vw,38px);font-weight:400;line-height:1.25;color:var(--granat);margin-bottom:20px}
+.hero-headline em{font-style:italic;color:var(--zloto)}
+.hero-sub{font-size:15px;color:var(--text-mid);max-width:520px;margin-bottom:32px;line-height:1.75}
+.meta-row{display:flex;gap:20px;flex-wrap:wrap;margin-bottom:36px}
+.meta-item{font-size:12px;color:var(--text-light);display:flex;align-items:center;gap:6px}
+.meta-dot{width:6px;height:6px;border-radius:50%;background:var(--zloto);flex-shrink:0}
+.recog{background:white;border:0.5px solid var(--border);border-left:3px solid var(--zloto);border-radius:0 8px 8px 0;padding:20px 24px;margin-bottom:36px}
+.recog-title{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-light);margin-bottom:14px}
+.recog-item{font-size:14px;color:var(--text-mid);padding:7px 0;border-bottom:0.5px solid var(--border);line-height:1.55}
+.recog-item:last-child{border-bottom:none}
+.btn-primary{display:inline-block;background:var(--granat);color:white;font-family:'Inter',sans-serif;font-size:14px;font-weight:500;padding:16px 40px;border:none;border-radius:3px;cursor:pointer;letter-spacing:.04em;transition:background .15s,transform .1s;text-decoration:none}
+.btn-primary:hover{background:var(--granat-mid);transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:var(--text-light);font-size:13px;border:0.5px solid var(--border-mid);padding:10px 22px;border-radius:3px;cursor:pointer;transition:background .15s;font-family:'Inter',sans-serif}
+.btn-ghost:hover{background:rgba(28,43,74,.05)}
+.disclaimer{font-size:11px;color:var(--text-light);margin-top:16px;line-height:1.6}
+#screen-quiz{display:none;padding-top:24px}
+.progress-wrap{margin-bottom:28px}
+.progress-top{display:flex;justify-content:space-between;font-size:12px;color:var(--text-light);margin-bottom:8px}
+.progress-bar{height:2px;background:var(--border);border-radius:1px;overflow:hidden}
+.progress-fill{height:100%;background:var(--zloto);border-radius:1px;transition:width .35s ease}
+.q-tag{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--zloto);margin-bottom:12px}
+.q-text{font-family:'Cormorant Garamond',serif;font-size:clamp(20px,4vw,25px);font-weight:400;line-height:1.38;color:var(--granat);margin-bottom:6px}
+.q-sub{font-size:13px;color:var(--text-light);margin-bottom:24px;line-height:1.6;font-style:italic}
+.options{display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
+.opt{display:flex;align-items:flex-start;gap:14px;padding:15px 18px;background:white;border:0.5px solid var(--border);border-radius:6px;cursor:pointer;transition:border-color .15s,background .15s;text-align:left;width:100%}
+.opt:hover{border-color:var(--zloto);background:var(--zloto-light)}
+.opt.selected{border-color:var(--zloto);background:var(--zloto-light)}
+.opt-dot{width:18px;height:18px;min-width:18px;border-radius:50%;border:1.5px solid var(--border-mid);margin-top:2px;transition:background .15s,border-color .15s;flex-shrink:0}
+.opt.selected .opt-dot{background:var(--zloto);border-color:var(--zloto)}
+.opt-text{font-size:14px;line-height:1.6;color:var(--text)}
+.quiz-nav{display:flex;gap:12px;align-items:center;justify-content:space-between}
+.btn-next{flex:1;max-width:200px;text-align:center;background:var(--granat);color:white;font-family:'Inter',sans-serif;font-size:14px;font-weight:500;padding:13px 24px;border:none;border-radius:3px;cursor:pointer;transition:background .15s,opacity .15s;letter-spacing:.03em}
+.btn-next:disabled{opacity:.3;cursor:not-allowed}
+.btn-next:not(:disabled):hover{background:var(--granat-mid)}
+#screen-result{display:none;padding-top:24px}
+.result-header{background:var(--granat);border-radius:8px;padding:32px 28px;margin-bottom:24px;text-align:center}
+.result-eye{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--zloto);margin-bottom:12px}
+.result-title{font-family:'Cormorant Garamond',serif;font-size:clamp(20px,5vw,27px);font-weight:400;color:var(--kos);line-height:1.32;margin-bottom:10px}
+.result-pts{font-size:12px;color:rgba(245,240,232,.45)}
+.result-body{background:white;border:0.5px solid var(--border);border-radius:8px;padding:24px;margin-bottom:20px}
+.result-body p{font-size:15px;color:var(--text-mid);line-height:1.78;margin-bottom:14px}
+.result-body p:last-child{margin-bottom:0}
+.result-body strong{color:var(--granat);font-weight:500}
+.signal-strip{border-left:3px solid var(--zloto);background:var(--zloto-light);padding:16px 20px;border-radius:0 6px 6px 0;margin-bottom:20px}
+.signal-strip p{font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:var(--granat);line-height:1.65}
+.cta-block{background:var(--granat);border-radius:8px;padding:28px 24px;text-align:center;margin-bottom:16px}
+.cta-block-title{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--kos);font-weight:400;margin-bottom:8px;line-height:1.35}
+.cta-block-sub{font-size:13px;color:rgba(245,240,232,.65);margin-bottom:20px;line-height:1.6}
+.btn-cta{display:inline-block;background:var(--zloto);color:var(--granat);font-family:'Inter',sans-serif;font-size:14px;font-weight:500;padding:15px 36px;border:none;border-radius:3px;cursor:pointer;letter-spacing:.04em;text-decoration:none;transition:opacity .15s}
+.btn-cta:hover{opacity:.88}
+.restart-wrap{text-align:center;margin-top:10px}
+.btn-restart{background:transparent;border:none;font-size:12px;color:var(--text-light);cursor:pointer;text-decoration:underline;padding:6px;font-family:'Inter',sans-serif}
+.btn-restart:hover{color:var(--text-mid)}
+.quiz-footer{text-align:center;padding:40px 20px 0;font-size:11px;color:var(--text-light);border-top:0.5px solid var(--border);margin-top:48px}
+.quiz-footer a{color:var(--text-light);text-decoration:none}
+.quiz-footer a:hover{color:var(--zloto)}
+@media(max-width:480px){.meta-row{gap:12px}.result-header{padding:24px 20px}.cta-block{padding:22px 18px}}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  Monika Więzowska &nbsp;&middot;&nbsp; <span>NIE-KOCHANE CÓRKI</span>
+</header>
+
+<div id="screen-intro" class="page">
+  <p class="hero-label">Quiz &middot; bezpłatnie &middot; 3&ndash;4 minuty</p>
+  <h1 class="hero-headline">Czy masz<br><em>matczyną lukę?</em></h1>
+  <p class="hero-sub">8 pytań. Konkretnych. Z życia.<br>Twój wynik pojawi się od razu &mdash; z opisem tego, co widać i co możesz zrobić dalej.</p>
+  <div class="meta-row">
+    <span class="meta-item"><span class="meta-dot"></span>8 pytań</span>
+    <span class="meta-item"><span class="meta-dot"></span>1 odpowiedź na pytanie</span>
+    <span class="meta-item"><span class="meta-dot"></span>wynik od razu na ekranie</span>
+  </div>
+  <div class="recog">
+    <p class="recog-title">Czy to brzmi jak Ty?</p>
+    <p class="recog-item">Po każdym telefonie od mamy czujesz napięcie &mdash; zanim jeszcze powie słowo</p>
+    <p class="recog-item">Masz 40 lat i przy niej znowu jesteś małą dziewczynką</p>
+    <p class="recog-item">Czujesz się odpowiedzialna za jej nastrój, jej szczęście, jej życie</p>
+    <p class="recog-item">Czekasz &mdash; może się zmieni, może tym razem będzie inaczej</p>
+    <p class="recog-item">Nie wiesz jak powiedzieć jej prawdę, bo boisz się co się stanie</p>
+  </div>
+  <button class="btn-primary" onclick="showQuiz()">Zaczynam quiz &rarr;</button>
+  <p class="disclaimer">Ten quiz nie jest narzędziem diagnostycznym.<br>Pomaga zobaczyć wzorce &mdash; nie etykietuje ani nie ocenia.</p>
+</div>
+
+<div id="screen-quiz" class="page">
+  <div class="progress-wrap">
+    <div class="progress-top"><span id="q-label">Pytanie 1 z 8</span><span id="q-pct">0%</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="p-fill" style="width:0%"></div></div>
+  </div>
+  <p class="q-tag" id="q-tag"></p>
+  <h2 class="q-text" id="q-text"></h2>
+  <p class="q-sub" id="q-sub"></p>
+  <div class="options" id="q-options"></div>
+  <div class="quiz-nav">
+    <button class="btn-ghost" id="btn-prev" onclick="prevQ()" style="visibility:hidden">&larr; Wstecz</button>
+    <button class="btn-next" id="btn-next" onclick="nextQ()" disabled>Dalej &rarr;</button>
+  </div>
+</div>
+
+<div id="screen-result" class="page">
+  <div class="result-header">
+    <p class="result-eye">Twój wynik</p>
+    <h2 class="result-title" id="r-title"></h2>
+    <p class="result-pts" id="r-pts"></p>
+  </div>
+  <div class="result-body" id="r-body"></div>
+  <div class="signal-strip" id="r-signal"></div>
+  <div class="cta-block">
+    <p class="cta-block-title" id="r-cta-title"></p>
+    <p class="cta-block-sub" id="r-cta-sub"></p>
+    <a href="https://www.facebook.com/groups/2072232399826944" class="btn-cta" target="_blank" rel="noopener">Dołącz do grupy &rarr;</a>
+  </div>
+  <div class="restart-wrap"><button class="btn-restart" onclick="restartQuiz()">Zacznij quiz od nowa</button></div>
+</div>
+
+<footer class="quiz-footer">
+  <p>&copy; Monika Więzowska &mdash; NIE-KOCHANE CÓRKI &nbsp;&middot;&nbsp; <a href="https://matczynaluka.pl">matczynaluka.pl</a></p>
+  <p style="margin-top:6px">Matczyną ranę leczy się na poziomie córki. Tu chodzi o Ciebie &mdash; nie o nią.</p>
+</footer>
+
+<script>
+var QS = [
+  {
+    tag: "Zachowania matki",
+    text: "Twoja matka chwaliła Cię przy innych ludziach. Jak to wyglądało?",
+    sub: "Przypomnij sobie konkretne sytuacje — z dzieciństwa albo teraz.",
+    opts: [
+      { t: "Chwaliła mnie szczerze — czułam, że jest ze mnie dumna.", s: 0 },
+      { t: "Chwaliła, ale zaraz potem była jakaś uwaga albo dopisek.", s: 1 },
+      { t: "Częściej milczała albo komentowała co zrobiłam nie tak.", s: 2 },
+      { t: "Przy innych była miła — przy mnie sam na sam zupełnie inna.", s: 3 },
+    ]
+  },
+  {
+    tag: "Fałszywe komunikaty",
+    text: "Które zdanie było w Twoim domu obecne — wprost albo w podtekście?",
+    sub: "Nie tylko słowa. Też milczenie, ton, spojrzenie.",
+    opts: [
+      { t: "Chwaliła mnie i mówiła, że jest ze mnie dumna. Czułam się widoczna.", s: 0 },
+      { t: "Jesteś przewrażliwiona — albo: Nie ma o czym mówić.", s: 1 },
+      { t: "Ale z ciebie egoistka — albo: Czemu ciągle musisz sprawiać problemy.", s: 2 },
+      { t: "Bez ciebie bym sobie nie poradziła — albo: Tylko ty się dla mnie liczysz.", s: 3 },
+      { t: "Żadne z powyższych — nie rozpoznaję tego u siebie.", s: 0 },
+    ]
+  },
+  {
+    tag: "Poczucie winy",
+    text: "Po spotkaniu z mamą — albo po jej telefonie — co najczęściej czujesz?",
+    sub: "Chodzi o wzorzec który się powtarza, nie o pojedynczy wyjątek.",
+    opts: [
+      { t: "Normalne zmęczenie po kontakcie z bliską osobą — szybko mija.", s: 0 },
+      { t: "Lekki dyskomfort. Odetchnięcie. Nic poważnego.", s: 1 },
+      { t: "Poczucie winy — że coś powiedziałam, że za mało zrobiłam.", s: 2 },
+      { t: "Kompletne wyczerpanie. Albo poczucie, że przez chwilę nie byłam sobą.", s: 3 },
+    ]
+  },
+  {
+    tag: "Czekanie",
+    text: "Czy rozpoznajesz w sobie taką myśl?",
+    sub: "Nie musisz mieć wszystkich — wystarczy że choć jedna brzmi znajomo.",
+    opts: [
+      { t: "Może się zmieni, kiedy się zestarzeć — gdzieś z tyłu głowy.", s: 1 },
+      { t: "Może tym razem będzie inaczej — przed każdą wizytą.", s: 2 },
+      { t: "Jeśli tylko bardziej się postaram, może w końcu… — od lat.", s: 3 },
+      { t: "Nie — akceptuję tę relację taką jaką jest.", s: 0 },
+    ]
+  },
+  {
+    tag: "Tożsamość córki",
+    text: "Kiedy jesteś przy mamie — przez telefon albo fizycznie — czujesz:",
+    sub: "Patrz co robi się w ciele, zanim zdążysz pomyśleć.",
+    opts: [
+      { t: "Swój naturalny sposób bycia. Jestem sobą.", s: 0 },
+      { t: "Lekkie napięcie — ale nic co naprawdę przeszkadza.", s: 1 },
+      { t: "Że muszę być ostrożna. Ważyć słowa. Omijać tematy.", s: 2 },
+      { t: "Że robię się mniejsza. Jakby moje życie nie miało tam miejsca.", s: 3 },
+    ]
+  },
+  {
+    tag: "Odpowiedzialność za matkę",
+    text: "Gdy mama jest smutna, zdenerwowana albo chora — co dzieje się w Tobie automatycznie?",
+    sub: "Przed myśleniem. Pierwsza reakcja.",
+    opts: [
+      { t: "Mogę pomóc — ale to jej życie i jej odpowiedzialność.", s: 0 },
+      { t: "Staram się pomóc, czasem bierze mnie za dużo.", s: 1 },
+      { t: "Czuję że to na mnie — szukam co mogę zrobić.", s: 2 },
+      { t: "Jej nastrój staje się moim nastrojem. Jej ból — moim zadaniem do naprawienia.", s: 3 },
+    ]
+  },
+  {
+    tag: "Przekonanie o sobie",
+    text: "Co się dzieje w Tobie gdy coś Ci się uda — w pracy, w relacji, dla siebie?",
+    sub: "Pierwsza reakcja — zanim zaczniesz oceniać.",
+    opts: [
+      { t: "Radość. Zasłużyłam i mogę się z tym dobrze czuć.", s: 0 },
+      { t: "Ulga — ale szybko myślę, czy to wystarczyło.", s: 1 },
+      { t: "Poczucie, że to przypadek albo że zapeszę.", s: 2 },
+      { t: "Czekam na to co zaraz pójdzie źle — jakby sukces był niebezpieczny.", s: 3 },
+    ]
+  },
+  {
+    tag: "Mówienie prawdy",
+    text: "Jak jest między Tobą a mamą, gdy chodzi o to co naprawdę czujesz?",
+    sub: "Nie co powinno być — co jest naprawdę.",
+    opts: [
+      { t: "Mogę z nią rozmawiać otwarcie — nawet o trudnych rzeczach.", s: 0 },
+      { t: "Omijam drażliwe tematy — nie dlatego że się boję, po prostu nie ma potrzeby.", s: 1 },
+      { t: "Nie mówię jej co czuję — omijam tematy, bo wiem że to skończy się źle.", s: 2 },
+      { t: "Chronię ją przed prawdą — boję się, że gdybym powiedziała co czuję, straciłabym ją.", s: 3 },
+    ]
+  },
+];
+
+var PROFILES = [
+  {
+    min: 0, max: 5,
+    title: "Nie widać wyraźnej matczynej luki",
+    body: "<p>Na podstawie Twoich odpowiedzi matczyna luka nie wydaje się być dziś głównym tematem.</p><p>Może relacja z mamą była wystarczająco bezpieczna. Może jesteś tu z ciekawości albo dla kogoś bliskiego. To jest również dobre miejsce, żeby być.</p><p>Jeśli jednak coś w którymś pytaniu zostawiło w Tobie jakiś ślad — warto się temu przyjrzeć. 🦡</p>",
+    signal: "Nie musisz mieć wystarczająco złej matki, żeby mieć matczyną lukę. Wystarczy, że jej miłość miała warunki.",
+    cta_title: "Jeśli coś w tym quizie Cię dotknęło — nie zostawaj z tym sama.",
+    cta: "W grupie NIE-KOCHANE CÓRKI znajdziesz inne kobiety i głos Moniki. Bez zapisów, bez płatności — po prostu wejdź.",
+  },
+  {
+    min: 6, max: 12,
+    title: "Matczyna luka jest obecna — ale jeszcze niewyraźna",
+    body: "<p>Kilka pytań trafiło w coś prawdziwego. Może nie wszystkie — ale jedno albo dwa <strong>dotknęły czegoś, co znasz</strong>.</p><p>Matczyna luka nie musi być głęboka, żeby robiła swoje. Nawet subtelne wzorce potrafią działać cicho — jako nawyk szukania aprobaty, jako automatyczne poczucie winy, jako coraz mniejsza przestrzeń na własne potrzeby.</p><p>To dobry moment, żeby się temu przyjrzeć. 🦡</p>",
+    signal: "Nie musisz mieć wystarczająco złej matki, żeby mieć matczyną lukę. Wystarczy, że jej miłość miała warunki.",
+    cta_title: "Nie zostawaj z tym sama.",
+    cta: "W grupie NIE-KOCHANE CÓRKI znajdziesz inne kobiety, które dokładnie to znają. I głos Moniki, który pomaga nazywać to, co jeszcze nie ma słów.",
+  },
+  {
+    min: 13, max: 18,
+    title: "Widzisz co się dzieje. Ale nie masz jeszcze na to słów.",
+    body: "<p>Kilka odpowiedzi trafiło dokładnie. Może to ciągłe napięcie przed jej telefonem. Może poczucie winy które nie ma wyraźnego powodu. Może zmęczenie które nie jest tylko zmęczeniem.</p><p><strong>Wiesz że coś tu jest.</strong> Nie musisz jeszcze wiedzieć co dokładnie. Wystarczy że to czujesz i że przestałaś ignorować.</p><p>Matczyną ranę leczy się na poziomie córki — nie matki. Tu chodzi o Ciebie — nie o nią. 🦡</p>",
+    signal: "Ile lat już czekasz? I czy wiesz, że możesz przestać?",
+    cta_title: "Inne kobiety już tam są. Czekają.",
+    cta: "W grupie NIE-KOCHANE CÓRKI rozmawiamy o tym bez wstydu i bez tłumaczenia się. Wejdź — to nic nie kosztuje.",
+  },
+  {
+    min: 19, max: 24,
+    title: "Matczyna luka kształtuje dużą część Twojego życia — od dawna.",
+    body: "<p>To nie jest Twoja wina. I nie znaczy, że coś z Tobą jest nie tak.</p><p>Przez lata uczyłaś się przetrwać. Ciągła czujność. Odpowiedzialność za jej nastrój. Winy które nie są Twoje. To nie są słabości — to strategie które kiedyś chroniły. Dziś działają automatycznie.</p><p><strong>Ale można to zmienić.</strong> Matczyną ranę leczy się na poziomie córki — nie matki. Tu chodzi o Ciebie — nie o nią. 🦡</p>",
+    signal: "Nie urodziłaś się żeby naprawiać jej życie. Urodziłaś się żeby żyć swoje.",
+    cta_title: "Pierwszy krok nie musi być duży.",
+    cta: "Wejdź do grupy NIE-KOCHANE CÓRKI. Poczytaj. Posłuchaj. Przekonaj się, że nie jesteś z tym sama — zanim zdecydujesz co dalej.",
+  },
+];
+
+var answers = new Array(QS.length).fill(null);
+var cur = 0;
+
+function showQuiz() {
+  document.getElementById("screen-intro").style.display = "none";
+  document.getElementById("screen-quiz").style.display = "block";
+  renderQ(0);
+}
+
+function renderQ(i) {
+  var q = QS[i];
+  var pct = Math.round((i / QS.length) * 100);
+  document.getElementById("q-label").textContent = "Pytanie " + (i+1) + " z " + QS.length;
+  document.getElementById("q-pct").textContent = pct + "%";
+  document.getElementById("p-fill").style.width = pct + "%";
+  document.getElementById("q-tag").textContent = q.tag;
+  document.getElementById("q-text").textContent = q.text;
+  document.getElementById("q-sub").textContent = q.sub;
+  var el = document.getElementById("q-options");
+  el.innerHTML = "";
+  q.opts.forEach(function(opt, oi) {
+    var div = document.createElement("div");
+    div.className = "opt" + (answers[i] === oi ? " selected" : "");
+    div.innerHTML = '<div class="opt-dot"></div><span class="opt-text">' + opt.t + '</span>';
+    div.addEventListener("click", (function(idx){ return function(){ selectOpt(idx); }; })(oi));
+    el.appendChild(div);
+  });
+  document.getElementById("btn-next").disabled = (answers[i] === null);
+  document.getElementById("btn-next").textContent = (i === QS.length-1) ? "Zobacz wynik →" : "Dalej →";
+  document.getElementById("btn-prev").style.visibility = (i === 0) ? "hidden" : "visible";
+  window.scrollTo({top:0, behavior:"smooth"});
+}
+
+function selectOpt(oi) {
+  answers[cur] = oi;
+  document.querySelectorAll(".opt").forEach(function(el, idx) {
+    el.classList.toggle("selected", idx === oi);
+    var d = el.querySelector(".opt-dot");
+    if (d) { d.style.background = idx===oi ? "#C4A84B" : ""; d.style.borderColor = idx===oi ? "#C4A84B" : ""; }
+  });
+  document.getElementById("btn-next").disabled = false;
+}
+
+function nextQ() {
+  if (answers[cur] === null) return;
+  if (cur === QS.length-1) { showResult(); return; }
+  cur++; renderQ(cur);
+}
+
+function prevQ() {
+  if (cur === 0) return;
+  cur--; renderQ(cur);
+}
+
+function showResult() {
+  var total = 0;
+  for (var i = 0; i < QS.length; i++) { if (answers[i] !== null) total += QS[i].opts[answers[i]].s; }
+  var p = PROFILES[0];
+  for (var j = 0; j < PROFILES.length; j++) { if (total >= PROFILES[j].min && total <= PROFILES[j].max) { p = PROFILES[j]; break; } }
+  document.getElementById("screen-quiz").style.display = "none";
+  document.getElementById("screen-result").style.display = "block";
+  document.getElementById("r-title").textContent = p.title;
+  document.getElementById("r-pts").textContent = "Wynik: " + total + " / 24";
+  document.getElementById("r-body").innerHTML = p.body;
+  document.getElementById("r-signal").innerHTML = "<p>" + p.signal + "</p>";
+  document.getElementById("r-cta-title").textContent = p.cta_title;
+  document.getElementById("r-cta-sub").textContent = p.cta;
+  window.scrollTo({top:0, behavior:"smooth"});
+}
+
+function restartQuiz() {
+  answers = new Array(QS.length).fill(null); cur = 0;
+  document.getElementById("screen-result").style.display = "none";
+  document.getElementById("screen-quiz").style.display = "none";
+  document.getElementById("screen-intro").style.display = "block";
+  document.getElementById("p-fill").style.width = "0%";
+  window.scrollTo({top:0, behavior:"smooth"});
+}
+</script>
+</body>
+</html>
